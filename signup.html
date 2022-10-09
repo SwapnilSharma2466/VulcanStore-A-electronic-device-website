@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  #logo {
+    float: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: white;
+
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  span {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font: normal 30px 'Open Sans', cursive;
+    background-color: black;
+  }
+
+
+
+  body {
+  background-size: cover;
+    font-family: "Segoe UI Light";
+    font-size: 20px;
+    color: white;
+
+  }
+
+
+  	fieldset {
+  background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%, rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
+  		margin-left: 20px;
+  		text-align: center;
+  		padding: 30px;
+  		width: 50px;
+
+  	}
+
+  	label {
+  		color: aliceblue;
+  	}
+
+  	.error {
+  		color: white;
+  		font-size: 15px;
+  	}
+
+  	input[type=text] {
+  		width: 200px;
+  		padding: 10px;
+  	}
+
+  	input[type=password] {
+  		margin: 2px;
+  		width: 200px;
+  		padding: 10px;
+
+  	}
+
+  	input[type=number] {
+  		margin: 2px;
+  		width: 200px;
+  		padding: 10px;
+
+  	}
+
+  	input[type=submit] {
+  		background-color: green;
+  		color: aliceblue;
+
+  		font-size: 1.5em;
+  		padding: 10px;
+  		margin: 5px;
+  	}
+
+
+  .footer-distributed {
+    background-color: black;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: 0px;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+
+  }
+
+  /* Footer left */
+
+  .footer-distributed .footer-left {
+    width: 40%;
+  }
+
+  /* The company logo */
+
+  .footer-distributed h3 {
+    color: #ffffff;
+    font: normal 36px 'Open Sans', cursive;
+    margin: 0;
+  }
+
+  .footer-distributed h3 span {
+    color: lightseagreen;
+  }
+
+  /* Footer links */
+
+  .footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+  }
+
+  .footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    font-weight: 400;
+    text-decoration: none;
+
+  }
+
+  .footer-distributed .footer-company-name {
+    color: #222;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+
+  }
+
+  /* Footer Center */
+
+  .footer-distributed .footer-center {
+    width: 35%;
+  }
+
+  .footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+  }
+
+  .footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+  }
+
+  .footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 400;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  .footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .footer-distributed .footer-center p a {
+    color: lightseagreen;
+    text-decoration: none;
+    ;
+  }
+
+  .footer-distributed .footer-links a:before {
+    content: "|";
+    font-weight: 300;
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+  }
+
+  .footer-distributed .footer-links .link-1:before {
+    content: none;
+  }
+
+  /* Footer Right */
+
+  .footer-distributed .footer-right {
+    width: 20%;
+  }
+
+  .footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+    ;
+  }
+
+  #about {
+    color: white;
+    text-decoration-line: none;
+    margin-right: 180px;
+  }
+
+  .footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .footer-distributed .footer-icons {
+    margin-top: 25px;
+  }
+
+  .social {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+
+    margin-right: 3px;
+    margin-bottom: 5px;
+  }
+</style>
+
+<body background="Images/6.jpg">
+  <div id="logo">
+    <a id="logo1" href="Main.html"><span>Vulcan Store</span>
+    </a>
+  </div>
+
+  <form id="form" action="" method="post">
+  		<fieldset>
+
+  			<label> First Name:
+  				<input id="name1" type="text" name="username">
+  			</label><br><br>
+  			<label> Last Name:
+  				<input id="name2" type="text" name="username">
+  			</label> <br><br>
+  			<label> Password :
+  				<input id="password" type="password" name="password">
+  			</label><br><br>
+  			<label> Contact :
+  				<input id="phone" type="number" name="Phone">
+  			</label><br><br>
+  			<label> Email Address :
+  				<input id="email" type="text" name="email">
+  			</label><br><br>
+  			<br>
+  			<input type="submit" value="Register" />
+  			<br />
+  			<p id="errorMessage" class="error">
+  			</p>
+  		</fieldset>
+  	</form>
+  	<p id="successMessage" class="success">
+  	</p>
+
+
+
+  <br>
+  <footer class="footer-distributed">
+
+    <div class="footer-left">
+
+      <h3>Vulcan Store</h3>
+
+      <p class="footer-links">
+        <a href="Main.html" class="link-1">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </p>
+
+      <p class="footer-company-name" style="color:white;">Vulcan Store © 2022</p>
+    </div>
+
+    <div class="footer-center">
+
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>Chitkara University</span> Rajpura, Punjab</p>
+      </div>
+
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>8351068979</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a>swapnil2466.be20@chitkara.edu.in</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      <p class="footer-company-about">
+        <span><a id="about" href="feedback.html">Feedback</a><span>
+      </p>
+
+      <div class="footer-icons">
+        <a href="https://www.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a>
+        <a href="https://in.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+
+      </div>
+
+    </div>
+
+  </footer>
+  	<script src="js/regestration.js"></script>
+
+</body>
+
+
+</html>

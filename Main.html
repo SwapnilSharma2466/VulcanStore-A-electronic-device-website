@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Vulcan Store</title>
+
+</head>
+<style media="screen">
+  header {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  #logo {
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: white;
+    background-color: black;
+  }
+
+  #logo1 {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font: normal 30px 'Open Sans', cursive;
+  }
+
+  #headerLinks {
+    float: right;
+    text-align: right;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+  }
+
+  #search {
+    border: 1px solid #030303;
+    width: 250px;
+    height: 30px;
+    margin-right: 20px;
+    border-radius: 20px;
+  }
+
+  #headerLinks a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+
+  }
+
+
+  #log {
+    background-color: black;
+    margin: 0px;
+  }
+  #log:hover{
+    opacity: 0.7;
+  }
+
+  #sign {
+    background-color: black;
+  }
+
+  #sign:hover{
+    opacity: 0.7;
+  }
+
+  .offer {
+    position: relative;
+    font-family: Arial;
+    width: 102.3%;
+
+  }
+
+  .prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+  
+  input:hover {
+    opacity: 0.7;
+
+  }
+
+  #a {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+
+  #b {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+
+  #content {
+    clear: both;
+    overflow: auto;
+    padding-top: 29px;
+
+  }
+
+  /* Whole page content */
+  #mainWrapper {
+    width: 80%;
+    padding-left: 10%;
+  }
+
+
+  /* Sidebar */
+  #content .sidebar {
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(146, 146, 146, 1.00);
+    float: left;
+    width: 20%;
+    padding-left: 3%;
+    padding-right: 2%;
+    text-align: center;
+    background-color: black;
+    padding-top: 36px;
+    height: 630px;
+    border: 1px solid white;
+
+  }
+
+  /* main content of the site */
+  #content .mainContent {
+    float: left;
+    width: 70%;
+    text-align: center;
+    padding-left: 4%;
+
+  }
+
+  /*menubar's properties for menus in sidebar */
+  #content .sidebar #menubar {
+    text-align: left;
+    color: rgba(146, 146, 146, 1.00);
+    position: relative;
+    left: 0%;
+
+  }
+
+
+  /*menu elements */
+  .menu ul li {
+    list-style-type: none;
+    font-size: x-large;
+    position: relative;
+    left: -35px;
+    padding-top: 12px;
+    text-decoration: none;
+
+  }
+
+  .menu ul li a {
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+  }
+
+  .menu ul li a:hover{
+    transition: transform 0.2s;
+    color: red;
+  }
+
+  /* Product rows for catalog */
+  #content .mainContent .productRow {
+    overflow: auto;
+    color: rgba(146, 146, 146, 1.00);
+  }
+
+  /* Each product Information in the catalog */
+  .mainContent .productRow .productInfo {
+    float: left;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 22%;
+  }
+
+
+  /* Prices of a products in catalog */
+  .productRow .productInfo .price {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 22px;
+    position: relative;
+    top: -20px;
+  }
+
+  /* Content holder for products in catalog*/
+  .productRow .productInfo .productContent {
+    position: relative;
+    top: -37px;
+    font-size: 14px;
+    font-family: source-sans-pro, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    color: white;
+  }
+
+  /* Buy button for products in catalog */
+  .productRow .productInfo .buyButton {
+    position: relative;
+    top: -48px;
+    width: 84%;
+    background-color: black;
+    height: 35px;
+    color: white;
+    border-style: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 8px;
+    cursor: pointer;
+  }
+
+  .video {
+    width: 103%;
+  }
+
+  .video h2 {
+    width: 99.5%;
+  }
+
+  .newlaunch {
+    background-image: linear-gradient(to top left, #000000 0%, #2fb6df 74%);
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .bestdeals {
+    background-image: linear-gradient(to top left, #000000 0%, #7894e9 74%);
+    color: white;
+    font-family: sans-serif;
+    align-content: center;
+  }
+
+  .microsoft {
+    display: inline;
+    position: relative;
+  }
+
+  .google {
+    display: inline;
+    position: relative;
+  }
+
+  .footer-distributed {
+    background-color: black;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 14px;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  /* Footer left */
+
+  .footer-distributed .footer-left {
+    width: 40%;
+  }
+
+  /* The company logo */
+
+  .footer-distributed h3 {
+    color: #ffffff;
+    font: normal 36px 'Open Sans', cursive;
+    margin: 0;
+  }
+
+  .footer-distributed h3 span {
+    color: lightseagreen;
+  }
+
+  /* Footer links */
+
+  .footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+  }
+
+  .footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    font-weight: 400;
+    text-decoration: none;
+
+  }
+
+  .footer-distributed .footer-company-name {
+    color: #222;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+
+  }
+
+  /* Footer Center */
+
+  .footer-distributed .footer-center {
+    width: 35%;
+  }
+
+  .footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+  }
+
+  .footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+  }
+
+  .footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 400;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  .footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .footer-distributed .footer-center p a {
+    color: lightseagreen;
+    text-decoration: none;
+    ;
+  }
+
+  .footer-distributed .footer-links a:before {
+    content: "|";
+    font-weight: 300;
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+
+  }
+
+  .footer-distributed .footer-links a:visited {
+    text-decoration: none;
+  }
+
+  .footer-distributed .footer-links .link-1:before {
+    content: none;
+  }
+
+  /* Footer Right */
+
+  .footer-distributed .footer-right {
+    width: 20%;
+  }
+
+  .footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+    ;
+  }
+
+  #about {
+    color: white;
+    text-decoration-line: none;
+    margin-left: 20px;
+  }
+
+  .footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .footer-distributed .footer-icons {
+    margin-top: 25px;
+  }
+
+  .social {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+
+    margin-right: 3px;
+    margin-bottom: 5px;
+  }
+
+ 
+
+  .nav a {
+    color: white;
+    text-align: center;
+    padding: 5px 30px;
+    font-size: 21px;
+    text-decoration: none;
+
+  }
+
+
+  body {
+    background-image: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+    font-family: "Segoe UI Light";
+  }
+
+  /* Media query for tablets */
+@media screen and (max-width:700px) {
+/* search field in sidebar */
+#content .sidebar #search {
+	display: none;
+}
+/* sidebar */
+#content .sidebar {
+	float: none;
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	padding-left: 12%;
+	padding-top: 0px;
+}
+/* horizontal separators in sidebar */
+#content .sidebar hr {
+	display: none;
+}
+/*The sidebar and maincontent of page */
+#content {
+	position: relative;
+	top: -22px;
+	width: 100%;
+	overflow: hidden;
+}
+/*menu headings in sidebar */
+#menubar .menu h2 {
+	display: inline;
+	font-size: medium;
+	padding-right: 6%;
+}
+/* Unordered List of links */
+#menubar .menu ul {
+	display: inline;
+}
+/*list elements */
+#menubar .menu ul li {
+	display: inline;
+	font-size: medium;
+	padding-left: 0%;
+	padding-right: 3%;
+}
+/*The link to be hidden in tablet view */
+.sidebar #menubar .menu ul .notimp {
+	display: none;
+}
+/* menus in sidebar */
+.sidebar #menubar .menu {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 16px;
+}
+
+.mainContent .productRow .productInfo {
+    float: left;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 100%;
+    padding: 2px;;
+  }
+/*menubar in sidebar */
+#content .sidebar #menubar {
+	position: relative;
+	left: -7%;
+	overflow: hidden;
+	
+	padding-top: 0px;
+}
+/* offer banners content */
+#mainWrapper #offer p {
+	font-size: small;
+}
+/* main content region of page */
+#mainWrapper #content .mainContent {
+	overflow: hidden;
+	width: 95%;
+	margin-top: 40px;
+}
+/* Prices of products in catalog view */
+.productRow .productInfo .price {
+	font-size: 19px;
+}
+/* Content holders in catalog view */
+.productRow .productInfo .productContent {
+	font-size: 16px;
+}
+/* Buy buttons in catalog view */
+.productRow .productInfo .buyButton {
+	font-size: 15px;
+}
+/* Container for links in footer */
+#mainWrapper footer .footerlinks {
+	float: none;
+	width: 100%;
+	position: relative;
+	top: 17px;
+	clear: both;
+	text-align: center;
+	left: 0%;
+	padding-bottom: 19px;
+}
+/* Container for each footer divisions */
+#mainWrapper footer div {
+	width: 44%;
+	text-align: justify;
+	font-size: 15px;
+}
+/* Links in footer */
+.footerlinks p a {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	display: inline;
+	padding-right: 35px;
+}
+/* Footer region */
+#mainWrapper footer {
+	padding-left: 16px;
+	overflow: hidden;
+}
+/* Links in header */
+header #headerLinks a {
+	padding-left: 0px;
+	padding-right: 30px;
+}
+/* Offer- Text banner */
+#mainWrapper #offer {
+	padding-left: 22%;
+}
+/* Paragraphs in footer */
+footer .footerlinks p {
+	display: inline;
+}
+}
+
+/*media query for small screen devices */
+@media screen and (max-width:480px) {
+/*Container for links in header */
+#mainWrapper header #headerLinks {
+	width: 100%;
+	text-align: center;
+	background-color: rgba(190,190,190,1.00);
+	padding-bottom: 21px;
+}
+/* Logo placeholder*/
+#mainWrapper header #logo {
+	width: 100%;
+	text-align: center;
+}
+/* Links in header */
+header #headerLinks a {
+	text-align: center;
+	padding-right: 15px;
+	padding-left: 0px;
+}
+/*Offer - Text Banner */
+#mainWrapper #offer {
+	padding-left: 0px;
+	text-align: center;
+}
+/* Menubar in sidebar */
+#content .sidebar #menubar {
+	position: relative;
+	left: -8%;
+	text-align: center;
+}
+/*Menu headings in sidebar */
+#menubar .menu h2 {
+	width: 100%;
+	display: block;
+}
+/* Each product in catalog view */
+.mainContent .productRow .productInfo {
+	width: 100%;
+	display: block;
+	padding-left: 0px;
+	padding-right: 0px;
+	position: relative;
+	left: -2%;
+}
+#mainWrapper footer div {
+	width: 100%;
+	margin-left: -16px;
+	text-align: justify;
+	padding-bottom: 16px;
+	overflow: auto;
+}
+/* Unordered list for menu elements */
+.menu ul {
+	position: relative;
+	padding-left: 24%;
+}
+/* Container for links in footer */
+#mainWrapper footer .footerlinks {
+	padding-left: 8%;
+}
+/* Main content which excludes the sidebar */
+#mainwrapper #content .mainContent {
+	margin-top: -81px;
+	text-align: center;
+	width: 100%;
+	padding-left: 0px;
+}
+}
+  
+</style>
+
+<body>
+  <div id="mainWrapper">
+    <header>
+      <!-- This is the header content. It contains Logo and links -->
+
+      <div id="logo">
+        <a id="logo1" href="Main.html">Vulcan Store
+        </a>
+      </div>
+
+      <div id="headerLinks"><input id="search" type="text" placeholder="Search.."><a id="log" href="login.html" title="login">Login</a>
+        <a id="sign" href="signup.html" title="Sign up">Sign Up</a>
+      </div>
+      <br>
+    </header>
+    <br>
+    <br>
+
+    <div class="nav">
+      <a href="AllCatagories.html">All Catagories</a>
+      <a href="mobiles.html">Mobiles</a>
+      <a href="computer.html">Computers</a>
+      <a href="fashion.html">Printers</a>
+      <a href="accessories.html">Accessories</a>
+      
+    </div>
+
+    <br>
+    <div class="offer">
+<div class="slide fade">
+      <img id="offers" src="Images\8caf862c-30a3-490c-9d8e-77d77148d6c2.__CR0,0,1464,600_PT0_SX1464_V1___.jpg" alt="Nature" width="100%" height="400">
+</div>
+<div class="slide fade">
+      <img id="offers" src="Images/offer1.jpg" alt="Nature" width="100%" height="400">
+</div>
+<div class="slide fade">
+      <img id="offers" src="Images/offer2.jpg" alt="Nature" width="100%" height="400">
+</div>
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+    <div class="video">
+      <h2 class="newlaunch" align="center">New Launches</h2>
+
+      <div class="microsoft">
+        <iframe src="https://www.youtube.com/embed/Ke4kXDfsDuE" height="320" width="49%" title="The new Surface Pro 8. The most powerful Pro." frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="google">
+        <iframe src="https://www.youtube.com/embed/xMZaObIQps8" height="320" width="50%" title="Google Pixel 6 - For All You Are" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <h2 class="bestdeals" align="center">Top Deals</h2>
+      </div>
+    </div>
+
+    <div id="content">
+
+      <section class="sidebar">
+        <div id="menubar">
+          <nav class="menu">
+            <h2>
+              Trending
+            </h2>
+
+            <ul>
+              <!-- List of links under menuset 1 -->
+              <li><a href="#" title="Link">Best Sellers</a></li>
+              <li><a href="#" title="Link">New Releases</a></li>
+              <li><a href="#" title="Link">Best Deals</a></li>
+              <li class="notimp">
+                <a href="#" title="Link">Refurbished</a>
+              </li>
+            </ul>
+          </nav>
+          <nav class="menu">
+            <h2>Shop By Department </h2>
+            <!-- Title for menuset 2 -->
+
+            <ul>
+              <!--List of links under menuset 2 -->
+              <li><a href="#" title="Link">Mobiles</a></li>
+              <li><a href="#" title="Link">Computers</a></li>
+              <li><a href="#" title="Link">Refridgerator</a></li>
+              <li class="notimp">
+                <a href="#" title="Link">Washing Machine</a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+
+      </section>
+
+      <section class="mainContent">
+
+        <div class="productRow">
+          <!-- Each product row contains info of 3 elements -->
+          <div class="productInfo">
+            <!-- Each individual product description -->
+            <div><img alt="sample" src="Images\159954-phones-review-hands-on-samsung-galaxy-s22-ultra-review-image2-dr3aaf081q.jpg" width="200" height="200"></div>
+            <p class="price">Rs.75,999</p>
+            <p class="productContent">Samsung S22 </p>
+            <input type="button" name="button" value="Buy" class="buyButton" onclick="window.location.href='s22.html';">
+          </div>
+          <div class="productInfo">
+            <!-- Each individual product description -->
+            <div><img alt="sample" src="Images\1_kv-s_x1png_.jpg" width="200" height="200"></div>
+            <p class="price">Rs.4999</p>
+            <p class="productContent">OnePlus Buds Z2</p>
+            <input type="button" name="button" value="Buy" class="buyButton">
+          </div>
+          <div class="productInfo">
+            <!-- Each individual product description -->
+            <div><img alt="sample" src="Images\photo-1603457893497-4de5ef1d8ab1.jpg" width="200" height="200"></div>
+            <p class="price">Rs.49,999</p>
+            <p class="productContent">Sony Camera</p>
+            <input type="button" name="button" value="Buy" class="buyButton">
+          </div>
+          <div class="productInfo">
+            <!-- Each individual product description -->
+            <div><img alt="sample" src="Images\photo-1622434641406-a158123450f9.jpg" width="200" height="200"></div>
+            <p class="price">21,999</p>
+            <p class="productContent">Cannon G series Printer</p>
+            <input type="button" name="button" value="Buy" class="buyButton">
+          </div>
+          <div class="productInfo">
+            <!-- Each individual product description -->
+            <div><img alt="sample" src="Images\images.jpg" width="200" height="200"></div>
+            <p class="price">Rs.71,000</p>
+            <p class="productContent">Microsoft Surface Pro</p>
+            <input type="button" name="button" value="Buy" class="buyButton">
+          </div>
+          <div class="productInfo">
+            <!-- Each individual product description -->
+            <div><img alt="sample" src="Images\galaxy-tab-a7-lite-tunisie.jpg" width="200" height="200"></div>
+            <p class="price">Rs.27,999</p>
+            <p class="productContent">Samsung A7 Lite</p>
+            <input type="button" name="button" value="Buy" class="buyButton">
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer-distributed">
+
+      <div class="footer-left">
+
+        <h3>Vulcan Store</h3>
+
+        <p class="footer-links">
+          <a href="Main.html" class="link-1">Home</a>
+          <a href="#">Services</a>
+          <a href="aboutus.html">About Us</a>
+          <a href="contactus.html">Contact Us</a>
+        </p>
+
+        <p class="footer-company-name" style="color:white;">Copyright© 2022 Vulcan Store. All rights reserved.</p><br>
+        <p class="footer-company-name" style="color:white;">Swapnil Sharma</p>
+      </div>
+
+      <div class="footer-center">
+
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>Chitkara University</span> Rajpura, Punjab</p>
+        </div>
+
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>8351068979</p>
+        </div>
+
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a>swapnil2466.be20@chitkara.edu.in</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-right">
+
+        <p class="footer-company-about">
+          <span><a id="about" href="feedback.html">Feedback</a><span>
+        </p>
+
+        <div class="footer-icons">
+          <a href="https://www.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+          <a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter"></i></a>
+          <a href="https://in.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+
+        </div>
+
+      </div>
+
+    </footer>
+    <script src="js/slideshow.js"></script>
+</body>
+
+</html>
